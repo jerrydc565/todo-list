@@ -1,0 +1,113 @@
+main {
+  width: 70%;
+  margin-inline: auto;
+  max-width: 450px;
+}
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  img {
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+      transform: scale(70%);
+      opacity: 40%;
+    }
+  }
+}
+.title-container h1 {
+  color: white;
+  letter-spacing: 10px;
+}
+.searching-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  background-color: hsl(235, 24%, 19%);
+  border-radius: 4px;
+  align-items: center;
+}
+.searching-container .checkbox{
+  width: 30px;
+  height: 23px;
+  border-radius: 100%;
+  border: 1px solid rgba(128, 128, 128, 0.237);
+  background-color: transparent;
+}
+.searching-container input {
+  background-color: transparent;
+  border: 0px;
+  color: white;
+  font-size: 17px;
+  outline: none;
+  width: 100%;
+}
+.searching-container .add{
+padding: 5px;
+padding-inline: 10px;
+background-color: #eaeaf0;
+border: 1px solid rgb(158, 150, 150) ;
+border-radius: 3px;
+color: #868896;
+}
+::placeholder {
+  color: #cacde8;
+}
+.list-container {
+  width: 100%;
+  /* padding: 20px; */
+  background-color: hsl(235, 24%, 19%);
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 0.1px 2px 30px rgba(0, 0, 0, 0.34);
+}
+.list-container li {
+  color: white;
+  padding: 13px;
+  padding-inline: 25px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.21);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.list-container .checkbox {
+  width: 25px;
+  height: 25px;
+  border: 1px solid rgba(128, 128, 128, 0.299);
+  border-radius: 100px;
+}
+.footer-container {
+  display: flex;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.42);
+  padding: 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  div {
+    display: flex;
+    gap: 10px;
+  }
+}
+.footer-container p {
+  font-size: 10px;
+}
+.all {
+  font-weight: bold;
+  color: hsl(220, 98%, 61%);
+}
+.drag-and-drop {
+  color: white;
+  opacity: 30%;
+  font-size: 10px;
+
+  width: 70%;
+  margin-inline: auto;
+  text-align: center;
+  margin-top: 30px;
+}
