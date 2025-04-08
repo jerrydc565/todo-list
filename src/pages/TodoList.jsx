@@ -2,6 +2,8 @@ import React from "react";
 import SunImg from "../assets/images/icon-sun.svg";
 import MoonImg from "../assets/images/icon-moon.svg";
 import { useState } from "react";
+import ListCard from "../component/ListCard";
+import FooterCard from "../component/FooterCard";
 function TodoList() {
   const [mode, setMode] = useState("light");
   const [tasks, setTasks] = useState([]);
@@ -34,8 +36,8 @@ function TodoList() {
         style={{
           backgroundImage:
             mode !== "light"
-              ? 'url("/public/images/bg-desktop-dark.jpg")'
-              : 'url("/public/images/bg-desktop-light.jpg")',
+              ? 'url("/images/bg-desktop-dark.jpg")'
+              : 'url("/images/bg-desktop-light.jpg")',
           backgroundColor: mode === "light" ? "white" : "hsl(235, 21%, 11%)",
         }}
       >
@@ -74,36 +76,10 @@ function TodoList() {
             }}
           >
             {tasks.map((task, index) => (
-              <li
-                className="todo-list"
-                style={{
-                  color: mode === "light" ? "hsl(235, 24%, 19%)" : "",
-                }}
-                key={index}
-              >
-                {" "}
-                <div className="checkbox"></div>
-                {task}
-              </li>
+              <ListCard mode={mode} task={tasks} index={index} />
             ))}
 
-            <section
-              className="footer-container"
-              style={{
-                color: mode === "light" ? "hsl(235, 24%, 19%)" : "",
-              }}
-            >
-              <p> 5 item left </p>
-              <div className="all-container">
-                <p className="all"> All</p>
-                <p> Active </p>
-                <p>Completed</p>
-              </div>
-              <div>
-                <p>Clear</p>
-                <p>Completed</p>
-              </div>
-            </section>
+            <FooterCard mode={mode} />
           </ul>
         </main>
         <p
