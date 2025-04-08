@@ -10,7 +10,9 @@ function FormCard({mode, newTasks, handleInputChange, handleInputSumit}) {
           onSubmit={handleInputSumit}
           
     >
-      <button className="checkbox"></button>
+          <button className="checkbox"
+          
+          ></button>
           <input
             //   minLength={"10"}
             //   maxLength={"45"}
