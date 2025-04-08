@@ -1,6 +1,6 @@
 import React from "react";
 
-function ListCard({ mode, task, index }) {
+function ListCard({ mode, task, index, deleteTask }) {
   return (
     <li
       className="todo-list"
@@ -10,8 +10,21 @@ function ListCard({ mode, task, index }) {
       key={index}
     >
       {" "}
-      <div className="checkbox"></div>
-      {task}
+      <div className="task-div">
+        <div className="checkbox"></div> {task}
+      </div>
+      <div>
+        <img
+          src="/images/CANCEL-ICON.png"
+          alt=""
+          width={"20px"}
+          className="cancel-icon"
+          onClick={() => deleteTask(index)}
+          style={{
+            filter: mode === "light" ? "invert(0%)" : "",
+          }}
+        />
+      </div>
     </li>
   );
 }

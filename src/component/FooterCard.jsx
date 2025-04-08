@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FooterCard({mode}) {
+function FooterCard({mode,tasks,setTasks}) {
   return (
     <section
       className="footer-container"
@@ -8,14 +8,14 @@ function FooterCard({mode}) {
         color: mode === "light" ? "hsl(235, 24%, 19%)" : "",
       }}
     >
-      <p> 5 item left </p>
+      <p> {tasks.length} item left </p>
       <div className="all-container">
         <p className="all"> All</p>
         <p> Active </p>
         <p>Completed</p>
       </div>
       <div>
-        <p>Clear</p>
+        <p onClick={() => setTasks([])}>Clear</p>
         <p>Completed</p>
       </div>
     </section>

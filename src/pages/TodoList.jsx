@@ -4,6 +4,7 @@ import MoonImg from "../assets/images/icon-moon.svg";
 import { useState } from "react";
 import ListCard from "../component/ListCard";
 import FooterCard from "../component/FooterCard";
+import FormCard from "../component/FormCard";
 function TodoList() {
   const [mode, setMode] = useState("light");
   const [tasks, setTasks] = useState([]);
@@ -29,6 +30,12 @@ function TodoList() {
     e.preventDefault();
     addTask();
   };
+  const deleteTask = (index) => {
+    const filtered = tasks.filter((tsk, idx) => {
+      return index !== idx
+    })
+    setTasks(filtered)
+  }
   return (
     <>
       <section
@@ -50,25 +57,7 @@ function TodoList() {
               onClick={handleModeChange}
             />
           </div>
-          <form
-            className="searching-container"
-            style={{
-              backgroundColor: mode === "light" ? "hsl(0, 0%, 98%)" : "",
-            }}
-            onSubmit={handleInputSumit}
-          >
-            <button className="checkbox"></button>
-            <input
-              type="text"
-              placeholder="Currently typing"
-              style={{
-                color: mode === "light" ? "hsl(236, 9%, 61%)" : "",
-              }}
-              value={newTasks}
-              onChange={handleInputChange}
-            />
-            {/* <button className="add"> ADD</button> */}
-          </form>
+          <FormCard mode={mode} newTasks={newTasks} handleInputChange={handleInputChange} handleInputSumit={handleInputSumit}/>
           <ul
             className="list-container"
             style={{
@@ -76,10 +65,10 @@ function TodoList() {
             }}
           >
             {tasks.map((task, index) => (
-              <ListCard mode={mode} task={tasks} index={index} />
+              <ListCard mode={mode} index={index} task={task} deleteTask={deleteTask}/>
             ))}
 
-            <FooterCard mode={mode} />
+          <FooterCard mode={mode} tasks={tasks} setTasks={setTasks}/>
           </ul>
         </main>
         <p
