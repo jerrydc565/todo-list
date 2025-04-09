@@ -31,6 +31,8 @@ function TodoList() {
     };
   }, [resize]);
 
+  
+
   const handleInputChange = (event) => {
     setNewTasks(event.target.value);
   };
