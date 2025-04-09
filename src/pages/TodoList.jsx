@@ -9,25 +9,34 @@ function TodoList() {
   const [mode, setMode] = useState("light");
   const [tasks, setTasks] = useState([]);
   const [newTasks, setNewTasks] = useState("");
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const [resize, setResize] = useState(1);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("( max-width:440px)");
+    window.addEventListener("resize", (e) => {
+      setResize(resize + 1);
+    });
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width:440px)");
+    console.log(mediaQuery)
     const handleMediaChange = (event) => {
       setIsMobile(event.matches);
+      console.log(event.matches);
     };
-    mediaQuery.addListener(handleMediaChange);
+    mediaQuery.addEventListener("change", handleMediaChange)
     return () => {
-      mediaQuery.removeListener(handleMediaChange);
+      mediaQuery.removeEventListener("change",handleMediaChange);
     };
-  }, []);
+  }, [resize]);
 
   const handleInputChange = (event) => {
     setNewTasks(event.target.value);
   };
   const addTask = () => {
     if (newTasks.trim() !== "") {
-      setTasks((t) => [ newTasks,...t]);
+      setTasks((t) => [newTasks, ...t]);
       setNewTasks("");
     }
   };
